@@ -58,6 +58,12 @@ public class Microprocesador implements Programable {
         
     }
 
+    public void desHacer(List<Operable> operaciones){
+        Operable ultimaOp = operaciones.getLast();
+        ultimaOp.undo(this);
+        operaciones.remove(operaciones.size() - 1);
+    }
+
 
     @Override
     public void setAddr(Integer addr) {
@@ -78,14 +84,18 @@ public class Microprocesador implements Programable {
     
     @Override
     public Programable copy() {
-        // TODO Auto-generated method stub
-        return null;
+        Microprocesador micro = new Microprocesador();
+        micro.acumuladorA = this.acumuladorA;
+        micro.acumuladorB = this.acumuladorB;
+        micro.programCounter = this.programCounter;
+        return micro;
     }
 
     @Override
     public void copyFrom(Programable programable) {
-        // TODO Auto-generated method stub
-        
+        programCounter = programable.getProgramCounter();
+        acumuladorA = programable.getAcumuladorA();
+        acumuladorB = programable.getAcumuladorB();
     }
 
 }

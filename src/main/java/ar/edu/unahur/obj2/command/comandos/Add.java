@@ -2,19 +2,12 @@ package ar.edu.unahur.obj2.command.comandos;
 
 import ar.edu.unahur.obj2.command.Programable;
 
-public class Add implements Operable {
+public class Add extends Command {
 
     @Override
-    public void execute(Programable micro) {
-        micro.incProgramCounter();
+    public void accion(Programable micro) {
         micro.setAcumuladorA(micro.getAcumuladorA() + micro.getAcumuladorB());
         micro.setAcumuladorB(0);
-        
-    }
-
-    @Override
-    public void undo(Programable micro) {
-        
     }
 
 }

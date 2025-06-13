@@ -2,7 +2,7 @@ package ar.edu.unahur.obj2.command.comandos;
 
 import ar.edu.unahur.obj2.command.Programable;
 
-public class Lodv implements Operable {
+public class Lodv extends Command {
     private Integer val;
 
     public Lodv(Integer val){
@@ -10,15 +10,8 @@ public class Lodv implements Operable {
     }
 
     @Override
-    public void execute(Programable micro) {
-        micro.incProgramCounter();
+    public void accion(Programable micro) {
         micro.setAcumuladorA(val);
-        
-    }
-
-    @Override
-    public void undo(Programable micro) {
-        
     }
 
 
